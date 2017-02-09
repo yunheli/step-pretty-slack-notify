@@ -1,6 +1,6 @@
 name: pretty-slack-notify-test
 version: 0.0.1
-description: Posts wercker build/deploy status to a Slack channel
+description: Posts wercker build/deploy status to a Slack channel test
 keywords:
   - notification
   - slack
