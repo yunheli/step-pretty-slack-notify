@@ -1,0 +1,31 @@
+environments:
+  global_env_test: 'global_env_test'
+parameters:
+  global_param_test: 'global_param_test'
+externalContext:
+
+stages:
+  - A
+
+A:
+  stage: A
+  plugin: UT
+
+B:
+  stage: A
+  plugin: UT
+
+notifications:
+  发送构建Job失败通知:
+    type: DINGTALK
+    on: SUCCESS
+    level: JOB
+    acting:
+      - 构建
+    template: ${JobName} 执行成功了
+    msgtype: text
+    channels:
+      - xxxxxxxxx
+    at:
+      - commiter
+      - trigger
