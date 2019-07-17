@@ -1,0 +1,7 @@
+job1:
+  plugin: MOCK
+  checkRule: abc = 0
+  except:
+    - 'exceptBranch'
+    - 'exceptRegex*'
+    - '^startExceptTest*'
