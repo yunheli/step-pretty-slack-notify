@@ -1,31 +1,25 @@
-environments:
-  global_env_test: 'global_env_test'
-parameters:
-  global_param_test: 'global_param_test'
-externalContext:
 
 stages:
-  - A
+  # - mock
+  # - 单元测试
+  - 产物测试
 
-A:
-  stage: A
-  plugin: UT
+only:
+  triggerType:
+    - pullRequest
+    - push
+    - tagPush
 
-B:
-  stage: A
-  plugin: UT
+STCa扫描:
+  stage: 产物测试
+  script: # 执行脚本
+    - |
+      ls
+      echo 1
 
-notifications:
-  发送构建Job失败通知:
-    type: DINGTALK
-    on: SUCCESS
-    level: JOB
-    acting:
-      - 构建
-    template: ${JobName} 执行成功了
-    msgtype: text
-    channels:
-      - xxxxxxxxx
-    at:
-      - commiter
-      - trigger
+STCb扫描:
+  stage: 产物测试
+  script: # 执行脚本
+    - |
+      ls
+      echo 2
